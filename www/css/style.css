@@ -1,0 +1,51 @@
+/* Empty. Add your own CSS if you like */
+/*Styles for list page*/
+.item.item-less-padding{
+}
+
+.bar.bar-header.expanded.super-expanded{
+  height: 200px;
+}
+.bar .title.stopwatch-sapce{
+  height: 150px;
+}
+.has-header.expanded.super-expanded{
+  top: 210px;
+}
+.bar.bar-header.expanded.super-expanded .bottom-space{
+  top: initial;
+  opacity: 1;
+  bottom:0;
+  left: 42px!important;
+}
+.col.center-content{
+  text-align:center;
+}
+.button.button-circular{
+  height: 120px;
+  width: 120px;
+  border-radius: 50%;
+}
+.button.button-outline{
+  border-color: none;
+}
+
+.button.button-outline, .button.button-outline.button-assertive, .button.button-outline.button-balanced, .button.button-outline.button-calm, .button.button-outline.button-dark, .button.button-outline.button-energized, .button.button-outline.button-light, .button.button-outline.button-positive, .button.button-outline.button-royal, .button.button-outline.button-stable{
+  border-color: initial;
+}
+
+/*
+About Modal
+*/
+.title.about-title{
+  text-align: center;
+  padding: 48px;
+  color: grey;
+}
+.about-text{
+  text-align: center;
+}
+.icon.about-icon{
+  font-size: 120px;
+
+}

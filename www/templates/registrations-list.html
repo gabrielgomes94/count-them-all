@@ -1,0 +1,172 @@
+<ion-view>
+  <ion-header-bar class="bar-calm-900 expanded has-header-fab-right">
+    <h1 class="title title-left light">Registros</h1>
+    <div class="buttons buttons-right header-item">
+      <span class="right-buttons">
+          <button ng-click="openModal()" class="button button-assertive button-fab button-fab-top-right expanded icon ion-plus-round"></button>
+      </span>
+      <span class='right-buttons'>
+        <button ng-click='openPopover()' class='button button-clear button-icon icon ion-android-more-vertical'></button>
+      </span>
+    </div>
+  </ion-header-bar>
+  <ion-content class="padding has-header expanded">
+    <div class="list card stable-bg" ng-repeat="item in entries">
+      <div class='row'>
+        <div class='col'>
+          <div class="item">
+            <h2>Registro #{{entries.length - $index}}</h2>
+            <p>{{item.doc.startedAt | date: 'EEEE  H:mm:ss,  dd/MM/yyyy'}}</p>
+          </div>
+        </div>
+        <div class='col col-20'>
+          <button ng-click='delete(item)' class='button button-clear icon ion-android-delete'></button>
+        </div>
+      </div>
+      <div class="item item-body">
+
+        <div class="list">
+          <a class="item item-icon-left">
+            <i class="icon ion-android-stopwatch"></i>
+            Duracao: {{item.doc.totalTimer.hours}}:{{item.doc.totalTimer.minutes}}:{{item.doc.totalTimer.seconds}}
+          </a>
+        </div>
+        Dados:
+        <div class="list">
+          <a class="item item-icon-left">
+            <i class="icon ion-android-walk"></i>
+            Pedestres
+            <span class="badge badge-royal">{{item.doc.walkers}}</span>
+          </a>
+          <a class="item item-icon-left">
+            <i class="icon ion-android-bicycle"></i>
+            Bicicletas
+            <span class="badge badge-balanced">{{item.doc.bicycles}}</span>
+          </a>
+          <a class="item item-icon-left">
+            <i class="icon ion-android-car"></i>
+            Carros
+            <span class="badge badge-assertive">{{item.doc.cars}}</span>
+          </a>
+          <a class="item item-icon-left">
+            <i class="icon ion-android-bus"></i>
+            Motos
+            <span class="badge badge-energized">{{item.doc.motorcycles}}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+<script id="about-modal.html" type="text/ng-template">
+<ion-modal-view>
+  <ion-header-bar class="bar-calm-900 expanded">
+    <button ng-click="closeModalAbout()" class="button back-button buttons no-text button-clear button-calm-900 header-item">
+      <i class="icon ion-ios-arrow-back"></i>
+    </button>
+    <h1 class="title light">Sobre</h1>
+  </ion-header-bar>
+  <ion-content class="has-header expanded">
+    <h1 class="title about-title">Count Them All!</h1>
+    <h4 class='subbed about-text'>Count vehicles over time with ease.</h4>
+    <p class='about-text'>
+      <i class='icon about-icon ion-social-github'></i>
+    </p>
+    <p class="about-text">
+      <a class="about-link">github.com/fmammoli/count-them-all</a>
+    </p>
+    <p class="about-text">
+      Empowered by <a class='assertive'>@fmammoli</a>
+    </p>
+  </ion-content>
+</ion-modal-view>
+</script>
+
+<script id="create-registry-modal.html" type="text/ng-template">
+  <ion-modal-view>
+  <ion-header-bar class="bar-calm-900 expanded super-expanded">
+
+    <button ng-click="cancelEntry()" class="button back-button buttons no-text button-clear button-calm-900 header-item">
+      <i class="icon ion-ios-arrow-back"></i>
+    </button>
+
+    <div class="title title-center stopwatch-sapce" style="right:63px;text-align:center;">
+      <h1 class="light">Cronômetro</h1>
+      <h1><timer autostart="false" interval="1000" class="h1 light">{{hhours}}:{{mminutes}}:{{sseconds}}</timer></h1>
+
+      <button class="button button-clear ink" ng-click="resetTimer()">
+        <i class="icon ion-stop"></i>
+      </button>
+      <button  class="button button-clear icon" ng-class=" timer.running ? 'ion-pause' : 'ion-play' " ng-click="toggleTimer()">
+      </button>
+    </div>
+
+  </ion-header-bar>
+  <ion-content class="has-header expanded super-expanded">
+
+    <div class="row">
+      <div class="col center-content">
+        <button class="button button-outline button-royal button-circular" ng-click="increment('walkers')">
+          <div>{{entry.walkers}}</div>
+          <i class="icon ion-android-walk"></i>
+        </button>
+        <p>
+          <button class="button button-small icon ion-minus-round" ng-disabled="!entry.walkers" ng-click="decrement('walkers')"></button>
+        </p>
+      </div>
+      <div class="col center-content">
+        <button class="button button-outline button-balanced button-circular" ng-click="increment('bicycles')">
+          <div>{{entry.bicycles}}</div>
+          <i class="icon ion-android-bicycle"></i>
+        </button>
+        <p>
+          <button class="button button-small icon ion-minus-round" ng-disabled="!entry.bicycles" ng-click="decrement('bicycles')"></button>
+        </p>
+      </div>
+    </div>
+
+    <div class="row padding">
+      <div class="col center-content">
+        <button class="button button-outline button-circular button-assertive" ng-click="increment('cars')">
+          <div>{{entry.cars}}</div>
+          <i class="icon ion-android-car"></i>
+        </button>
+        <p>
+          <button class="button button-small icon ion-minus-round" ng-disabled="!entry.cars" ng-click="decrement('cars')"></button>
+        </p>
+      </div>
+      <div class="col center-content">
+        <button class="button button-outline button-circular button-energized" ng-click="increment('motorcycles')">
+          <div>{{entry.motorcycles}}</div>
+          <i class="icon ion-android-bus"></i>
+        </button>
+        <p>
+          <button class="button button-small icon ion-minus-round" ng-disabled="!entry.motorcycles" ng-click="decrement('motorcycles')"></button>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <button ng-click="save()" class="button button-block button-assertive">Salvar</button>
+    </div>
+  </ion-content>
+  </ion-modal-view>
+</script>
+<script id="my-popover.html" type="text/ng-template">
+<ion-popover-view>
+  <ion-header-bar>
+    <h1 class='title'>Opções</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class='list'>
+      <a ng-click="mailTo()" class='item item-icon-right ink'>
+        <i class="icon ion-android-mail"></i>
+        Eniviar por email
+      </a>
+      <a ng-click="openModalAbout()" class='item item-icon-right ink'>
+        <i class="icon ion-android-settings"></i>
+        Sobre
+      </a>
+    </div>
+  </ion-content>
+</ion-popover-view>
+</script>
