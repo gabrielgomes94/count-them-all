@@ -8,6 +8,8 @@
       <span class='right-buttons'>
         <button ng-click='openPopover()' class='button button-clear button-icon icon ion-android-more-vertical'></button>
       </span>
+      
+      
     </div>
   </ion-header-bar>
   <ion-content class="padding has-header expanded">
@@ -17,11 +19,15 @@
           <div class="item">
             <h2>Registro #{{entries.length - $index}}</h2>
             <p>{{item.doc.startedAt | date: 'EEEE  H:mm:ss,  dd/MM/yyyy'}}</p>
+            
           </div>
         </div>
-        <div class='col col-20'>
-          <button ng-click='delete(item)' class='button button-clear icon ion-android-delete'></button>
+        <div class="col col-20">
+            
+            <button ng-click='delete(item)' class='button button-clear icon ion-android-delete'></button>
+            
         </div>
+
       </div>
       <div class="item item-body">
 
@@ -33,27 +39,108 @@
         </div>
         Dados:
         <div class="list">
-          <a class="item item-icon-left">
-            <i class="icon ion-android-walk"></i>
-            Pedestres
-            <span class="badge badge-royal">{{item.doc.walkers}}</span>
-          </a>
+          <!-- Lista - Fluxo 1 -->
+          <ion-label class="noPadding">Fluxo 1</ion-label>
           <a class="item item-icon-left">
             <i class="icon ion-android-bicycle"></i>
             Bicicletas
-            <span class="badge badge-balanced">{{item.doc.bicycles}}</span>
+            <span class="badge badge-balanced">{{item.doc.bicycles[0]}}</span>
           </a>
           <a class="item item-icon-left">
             <i class="icon ion-android-car"></i>
             Carros
-            <span class="badge badge-assertive">{{item.doc.cars}}</span>
+            <span class="badge badge-assertive">{{item.doc.cars[0]}}</span>
           </a>
           <a class="item item-icon-left">
+            <i class="icon ion-android-navigate"></i>
+            <ion-icon name="build"></ion-icon>
+            Veículos de Utilidade
+            <span class="badge badge-royal">{{item.doc.services[0]}}</span>
+          </a>                  
+          <a class="item item-icon-left">
             <i class="icon ion-android-bus"></i>
-            Motos
-            <span class="badge badge-energized">{{item.doc.motorcycles}}</span>
+            Veículos Pesados
+            <span class="badge badge-energized">{{item.doc.bus[0]}}</span>
           </a>
         </div>
+
+        <!-- Lista - Fluxo 2 -->
+        <div class="list">
+            <ion-label class="noPadding">Fluxo 2</ion-label>
+            <a class="item item-icon-left">
+              <i class="icon ion-android-bicycle"></i>
+              Bicicletas
+              <span class="badge badge-balanced">{{item.doc.bicycles[1]}}</span>
+            </a>
+            <a class="item item-icon-left">
+              <i class="icon ion-android-car"></i>
+              Carros
+              <span class="badge badge-assertive">{{item.doc.cars[1]}}</span>
+            </a>
+            <a class="item item-icon-left">
+              <i class="icon ion-android-navigate"></i>
+              <ion-icon name="build"></ion-icon>
+              Veículos de Utilidade
+              <span class="badge badge-royal">{{item.doc.services[1]}}</span>
+            </a>                  
+            <a class="item item-icon-left">
+              <i class="icon ion-android-bus"></i>
+              Veículos Pesados
+              <span class="badge badge-energized">{{item.doc.bus[1]}}</span>
+            </a>
+          </div>
+
+          <!-- Lista - Fluxo 3 -->
+          <div class="list">
+              <ion-label class="noPadding">Fluxo 3</ion-label>
+              <a class="item item-icon-left">
+                <i class="icon ion-android-bicycle"></i>
+                Bicicletas
+                <span class="badge badge-balanced">{{item.doc.bicycles[2]}}</span>
+              </a>
+              <a class="item item-icon-left">
+                <i class="icon ion-android-car"></i>
+                Carros
+                <span class="badge badge-assertive">{{item.doc.cars[2]}}</span>
+              </a>
+              <a class="item item-icon-left">
+                <i class="icon ion-android-navigate"></i>
+                <ion-icon name="build"></ion-icon>
+                Veículos de Utilidade
+                <span class="badge badge-royal">{{item.doc.services[2]}}</span>
+              </a>                  
+              <a class="item item-icon-left">
+                <i class="icon ion-android-bus"></i>
+                Veículos Pesados
+                <span class="badge badge-energized">{{item.doc.bus[2]}}</span>
+              </a>
+            </div>
+
+            <!-- Lista - Fluxo 4 -->
+            <div class="list">
+                <ion-label class="noPadding">Fluxo 4</ion-label>
+                <a class="item item-icon-left">
+                  <i class="icon ion-android-bicycle"></i>
+                  Bicicletas
+                  <span class="badge badge-balanced">{{item.doc.bicycles[3]}}</span>
+                </a>
+                <a class="item item-icon-left">
+                  <i class="icon ion-android-car"></i>
+                  Carros
+                  <span class="badge badge-assertive">{{item.doc.cars[3]}}</span>
+                </a>
+                <a class="item item-icon-left">
+                  <i class="icon ion-android-navigate"></i>
+                  <ion-icon name="build"></ion-icon>
+                  Veículos de Utilidade
+                  <span class="badge badge-royal">{{item.doc.services[3]}}</span>
+                </a>                  
+                <a class="item item-icon-left">
+                  <i class="icon ion-android-bus"></i>
+                  Veículos Pesados
+                  <span class="badge badge-energized">{{item.doc.bus[3]}}</span>
+                </a>
+              </div>
       </div>
     </div>
   </ion-content>
@@ -76,7 +163,7 @@
       <a class="about-link">github.com/fmammoli/count-them-all</a>
     </p>
     <p class="about-text">
-      Empowered by <a class='assertive'>@fmammoli</a>
+      Empowered by <a class='assertive'>@fmammoli</a> e @ggomes
     </p>
   </ion-content>
 </ion-modal-view>
@@ -91,59 +178,188 @@
     </button>
 
     <div class="title title-center stopwatch-sapce" style="right:63px;text-align:center;">
-      <h1 class="light">Cronômetro</h1>
-      <h1><timer autostart="false" interval="1000" class="h1 light">{{hhours}}:{{mminutes}}:{{sseconds}}</timer></h1>
-
+      <h1 class="light miniTitle">Cronômetro - <timer autostart="false" interval="1000" class="h1 light miniTitle">{{hhours}}:{{mminutes}}:{{sseconds}}</timer></h1>
       <button class="button button-clear ink" ng-click="resetTimer()">
-        <i class="icon ion-stop"></i>
+          <i class="icon ion-stop"></i>
       </button>
+
       <button  class="button button-clear icon" ng-class=" timer.running ? 'ion-pause' : 'ion-play' " ng-click="toggleTimer()">
       </button>
+     
+        
+        
+      
     </div>
 
   </ion-header-bar>
-  <ion-content class="has-header expanded super-expanded">
+  <ion-content class="has-header expanded super-expanded">    
+      
+    <!-- FLUXO 1 -->
+      <div class="row padding">
+          <ion-label class="noPadding">F<br>L<br>U<br>X<br>O<br>1</ion-label><br>
+          <div class="col center-content">
+              <button class="button button-outline button-balanced button-circular customButton" ng-click="increment('bicycles', 0)">
+                <div>{{entry.bicycles[0]}}</div>
+                <i class="icon ion-android-bicycle"></i>
+              </button>
+              <p>
+                <button class="button button-small icon ion-minus-round" ng-disabled="!entry.bicycles[0]" ng-click="decrement('bicycles', 0)"></button>
+              </p>
+          </div>
+          <div class="col center-content">
+            <button class="button button-outline button-circular button-assertive" ng-click="increment('cars', 0)">
+              <div>{{entry.cars[0]}}</div>
+              <i class="icon ion-android-car"></i>
+            </button>
+            <p>
+              <button class="button button-small icon ion-minus-round" ng-disabled="!entry.cars[0]" ng-click="decrement('cars', 0)"></button>
+            </p>
+          </div>
+          <div class="col center-content">
+            <button class="button button-outline button-royal button-circular" ng-click="increment('services', 0)">
+              <div>{{entry.services[0]}}</div>
+              <i class="icon ion-android-navigate"></i>
+            </button>
+            <p>
+              <button class="button button-small icon ion-minus-round" ng-disabled="!entry.services[0]" ng-click="decrement('services', 0)"></button>
+            </p>
+          </div>
+  
+          <div class="col center-content">
+            <button class="button button-outline button-circular button-energized" ng-click="increment('bus', 0)">
+              <div>{{entry.bus[0]}}</div>
+              <i class="icon ion-android-bus"></i>
+            </button>
+            <p>
+              <button class="button button-small icon ion-minus-round" ng-disabled="!entry.bus[0]" ng-click="decrement('bus', 0)"></button>
+            </p>
+          </div>
+      </div>
 
-    <div class="row">
-      <div class="col center-content">
-        <button class="button button-outline button-royal button-circular" ng-click="increment('walkers')">
-          <div>{{entry.walkers}}</div>
-          <i class="icon ion-android-walk"></i>
-        </button>
-        <p>
-          <button class="button button-small icon ion-minus-round" ng-disabled="!entry.walkers" ng-click="decrement('walkers')"></button>
-        </p>
-      </div>
-      <div class="col center-content">
-        <button class="button button-outline button-balanced button-circular" ng-click="increment('bicycles')">
-          <div>{{entry.bicycles}}</div>
-          <i class="icon ion-android-bicycle"></i>
-        </button>
-        <p>
-          <button class="button button-small icon ion-minus-round" ng-disabled="!entry.bicycles" ng-click="decrement('bicycles')"></button>
-        </p>
-      </div>
+    <!-- FLUXO 2 -->
+    <div class="row padding">
+        <ion-label class="noPadding">F<br>L<br>U<br>X<br>O<br>2</ion-label><br>
+        <div class="col center-content">
+            <button class="button button-outline button-balanced button-circular customButton" ng-click="increment('bicycles', 1)">
+              <div>{{entry.bicycles[1]}}</div>
+              <i class="icon ion-android-bicycle"></i>
+            </button>
+            <p>
+              <button class="button button-small icon ion-minus-round" ng-disabled="!entry.bicycles[1]" ng-click="decrement('bicycles', 1)"></button>
+            </p>
+        </div>
+        <div class="col center-content">
+          <button class="button button-outline button-circular button-assertive" ng-click="increment('cars', 1)">
+            <div>{{entry.cars[1]}}</div>
+            <i class="icon ion-android-car"></i>
+          </button>
+          <p>
+            <button class="button button-small icon ion-minus-round" ng-disabled="!entry.cars[1]" ng-click="decrement('cars', 1)"></button>
+          </p>
+        </div>
+        <div class="col center-content">
+          <button class="button button-outline button-royal button-circular" ng-click="increment('services', 1)">
+            <div>{{entry.services[1]}}</div>
+            <i class="icon ion-android-navigate"></i>
+          </button>
+          <p>
+            <button class="button button-small icon ion-minus-round" ng-disabled="!entry.services[1]" ng-click="decrement('services', 1)"></button>
+          </p>
+        </div>
+
+        <div class="col center-content">
+          <button class="button button-outline button-circular button-energized" ng-click="increment('bus', 1)">
+            <div>{{entry.bus[1]}}</div>
+            <i class="icon ion-android-bus"></i>
+          </button>
+          <p>
+            <button class="button button-small icon ion-minus-round" ng-disabled="!entry.bus[1]" ng-click="decrement('bus', 1)"></button>
+          </p>
+        </div>
     </div>
 
+    <!-- FLUXO 3 -->
     <div class="row padding">
-      <div class="col center-content">
-        <button class="button button-outline button-circular button-assertive" ng-click="increment('cars')">
-          <div>{{entry.cars}}</div>
-          <i class="icon ion-android-car"></i>
-        </button>
-        <p>
-          <button class="button button-small icon ion-minus-round" ng-disabled="!entry.cars" ng-click="decrement('cars')"></button>
-        </p>
-      </div>
-      <div class="col center-content">
-        <button class="button button-outline button-circular button-energized" ng-click="increment('motorcycles')">
-          <div>{{entry.motorcycles}}</div>
-          <i class="icon ion-android-bus"></i>
-        </button>
-        <p>
-          <button class="button button-small icon ion-minus-round" ng-disabled="!entry.motorcycles" ng-click="decrement('motorcycles')"></button>
-        </p>
-      </div>
+        <ion-label class="noPadding">F<br>L<br>U<br>X<br>O<br>3</ion-label><br>
+        <div class="col center-content">
+            <button class="button button-outline button-balanced button-circular customButton" ng-click="increment('bicycles', 2)">
+              <div>{{entry.bicycles[2]}}</div>
+              <i class="icon ion-android-bicycle"></i>
+            </button>
+            <p>
+              <button class="button button-small icon ion-minus-round" ng-disabled="!entry.bicycles[2]" ng-click="decrement('bicycles', 2)"></button>
+            </p>
+        </div>
+        <div class="col center-content">
+          <button class="button button-outline button-circular button-assertive" ng-click="increment('cars', 2)">
+            <div>{{entry.cars[2]}}</div>
+            <i class="icon ion-android-car"></i>
+          </button>
+          <p>
+            <button class="button button-small icon ion-minus-round" ng-disabled="!entry.cars[2]" ng-click="decrement('cars', 2)"></button>
+          </p>
+        </div>
+        <div class="col center-content">
+          <button class="button button-outline button-royal button-circular" ng-click="increment('services', 2)">
+            <div>{{entry.services[2]}}</div>
+            <i class="icon ion-android-navigate"></i>
+          </button>
+          <p>
+            <button class="button button-small icon ion-minus-round" ng-disabled="!entry.services[2]" ng-click="decrement('services', 2)"></button>
+          </p>
+        </div>
+
+        <div class="col center-content">
+          <button class="button button-outline button-circular button-energized" ng-click="increment('bus', 2)">
+            <div>{{entry.bus[2]}}</div>
+            <i class="icon ion-android-bus"></i>
+          </button>
+          <p>
+            <button class="button button-small icon ion-minus-round" ng-disabled="!entry.bus[2]" ng-click="decrement('bus', 2)"></button>
+          </p>
+        </div>
+    </div>
+
+    <!-- FLUXO 4 -->
+    <div class="row padding">
+        <ion-label class="noPadding">F<br>L<br>U<br>X<br>O<br>4</ion-label><br>
+        <div class="col center-content">
+            <button class="button button-outline button-balanced button-circular customButton" ng-click="increment('bicycles', 3)">
+              <div>{{entry.bicycles[3]}}</div>
+              <i class="icon ion-android-bicycle"></i>
+            </button>
+            <p>
+              <button class="button button-small icon ion-minus-round" ng-disabled="!entry.bicycles[3]" ng-click="decrement('bicycles', 3)"></button>
+            </p>
+        </div>
+        <div class="col center-content">
+          <button class="button button-outline button-circular button-assertive" ng-click="increment('cars', 3)">
+            <div>{{entry.cars[3]}}</div>
+            <i class="icon ion-android-car"></i>
+          </button>
+          <p>
+            <button class="button button-small icon ion-minus-round" ng-disabled="!entry.cars[3]" ng-click="decrement('cars', 3)"></button>
+          </p>
+        </div>
+        <div class="col center-content">
+          <button class="button button-outline button-royal button-circular" ng-click="increment('services', 3)">
+            <div>{{entry.services[3]}}</div>
+            <i class="icon ion-android-navigate"></i>
+          </button>
+          <p>
+            <button class="button button-small icon ion-minus-round" ng-disabled="!entry.services[3]" ng-click="decrement('services', 3)"></button>
+          </p>
+        </div>
+
+        <div class="col center-content">
+          <button class="button button-outline button-circular button-energized" ng-click="increment('bus', 3)">
+            <div>{{entry.bus[3]}}</div>
+            <i class="icon ion-android-bus"></i>
+          </button>
+          <p>
+            <button class="button button-small icon ion-minus-round" ng-disabled="!entry.bus[3]" ng-click="decrement('bus', 3)"></button>
+          </p>
+        </div>
     </div>
     <div class="row">
       <button ng-click="save()" class="button button-block button-assertive">Salvar</button>
@@ -160,12 +376,16 @@
     <div class='list'>
       <a ng-click="mailTo()" class='item item-icon-right ink'>
         <i class="icon ion-android-mail"></i>
-        Eniviar por email
+        Enviar por email
       </a>
       <a ng-click="openModalAbout()" class='item item-icon-right ink'>
         <i class="icon ion-android-settings"></i>
         Sobre
       </a>
+      <!-- 
+      <a ng-click='showConfirm()' class='item item-icon-right ink'>
+        Excluir todos os registros
+      </a> -->     
     </div>
   </ion-content>
 </ion-popover-view>

@@ -22,11 +22,15 @@
     $scope.entry = {
       id: 0,
       startedAt: 0,
-      totalTimer: 0,
-      walkers: 0,
-      bicycles: 0,
-      cars: 0,
-      motorcycles: 0
+      totalTimer: 0,            
+    
+      services: [0, 0, 0, 0],
+
+      bicycles: [0, 0, 0, 0],
+      
+      cars: [0, 0, 0, 0],
+      
+      bus: [0, 0, 0, 0]
     }
   }
 
@@ -50,9 +54,11 @@
   }).then(function(popover) {
    $scope.popover = popover;
   });
+  
   $timeout(function () {
-    ionic.material.ink.displayEffect();
+    //ionic.material.ink.displayEffect();
   }, 0);
+
   //Inside the modal
   $scope.timer = {
     running: false,
@@ -94,23 +100,25 @@
   }
 
   $scope.save = function (entry) {
-    $scope.resetTimer();
+    
     Entries.add(angular.copy($scope.entry)).then(function (res) {
       return fetchData();
     }).catch(function (err) {
       debugger;
     });
     resetEntry();
+    $scope.resetTimer();
     $scope.closeModal();
   }
 
-  $scope.increment = function (vehicle) {
-    $scope.entry[vehicle] += 1;
+  $scope.increment = function (vehicle, param) {
+    $scope.entry[vehicle][param] += 1;
   }
-  $scope.decrement = function (vehicle) {
-    $scope.entry[vehicle] -= 1;
+  $scope.decrement = function (vehicle, param) {
+    $scope.entry[vehicle][param] -= 1;
   }
   $scope.openModal = function () {
+    resetEntry();
     $scope.modal.show();
   }
 

@@ -4,13 +4,13 @@
 }
 
 .bar.bar-header.expanded.super-expanded{
-  height: 200px;
+  height: 100px;
 }
 .bar .title.stopwatch-sapce{
-  height: 150px;
+  height: 90px;
 }
 .has-header.expanded.super-expanded{
-  top: 210px;
+  /*top: 210px;*/
 }
 .bar.bar-header.expanded.super-expanded .bottom-space{
   top: initial;
@@ -22,8 +22,8 @@
   text-align:center;
 }
 .button.button-circular{
-  height: 120px;
-  width: 120px;
+  height: 75px;
+  width: 75px;
   border-radius: 50%;
 }
 .button.button-outline{
@@ -46,6 +46,20 @@ About Modal
   text-align: center;
 }
 .icon.about-icon{
-  font-size: 120px;
+  font-size: 100px; 
+}
 
+.noPadding{
+  padding: 0px;
+}
+
+.miniTitle{
+  font-size: 20px;
+}
+
+.im-wrapper, .padding{
+  padding: 0px !important;
+}
+.button-clear.button-clear{
+  color: black;
 }
